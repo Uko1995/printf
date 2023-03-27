@@ -1,22 +1,17 @@
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdarg.h>
 #include "main.h"
-#include <string.h>
 
 /**
- * _printf - prints to std output
- * @format: the format string
- * Return: returns th number of characters printed
+ * _printf - produces output according to a format.
+ * @format: input string
+ *
+ * Return: count
  */
 
 int _printf(const char *format, ...)
 {
-	unsigned int count = 0;
-	int d = 0;
-	int i = 0;
-	char c = '\0';
-	char *s = '\0';
+	int count = 0;
+	int d, i;
+	char c, *s;
 	va_list args;
 
 	va_start(args, format);
@@ -24,34 +19,45 @@ int _printf(const char *format, ...)
 	while (*format != '\0')
 	{
 		if (*format == '%')
-		{	
+		{
 			format++;
-			if (*format == 'c')
-			{	_printchar(c, args);
-				count++;
+			switch (*format)
+			{
+				case 'c':
+					c = va_arg(args, int);
+					write(1, &c, sizeof(char));
+					count ++;
+					break;
+				case 's':
+					s = va_arg(args, char *);
+					if (s == NULL)
+						s = "(null)";
+					write(1, s, strlen(s));
+					count += strlen(s);
+					break;
+				case 'd':
+					d = va_arg(args, int);
+					write(1, &d, sizeof(d));
+					count++;
+					break;
+				case 'i':
+					i = va_arg(args, int);
+					write(1, &i, sizeof(i));
+					count++;
+					break;
+				case '%':
+					write(1, "%", 1);
+					count++;
+					break;
+				default:
+					write(1, format, 1);
+					break;
 			}
-			else if (*format == 's')
-			{	_printstring(s, args);
-				count++;
-				 /*while (*s)
-				 {	
-					 write(1, s, strlen(s));
-                    			s++;
-                    			count++;
-				 }*/	
-			}
-			else if (*format == 'd')
-			{	_printd(d, args);
-				count++;
-			}
-			else if	 (*format == 'i')
-			{	_printi(i, args);
-				count++;
-			}	
-			else if (*format == '%')
-				write(1, "%", 1);
-			else
-				write (1, format, strlen(format));
+		}
+		else
+		{
+			write(1, format, 1);
+			count++;
 		}
 		format++;
 	}
