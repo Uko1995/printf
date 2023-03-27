@@ -23,10 +23,10 @@ char _printchar(char c, va_list args)
  * Return: s
  */
 
-char _printstring(char *s, va_list args)
-{
-	s = va_arg(args, int);
-	write(1, s, strlen(char *));
+char *_printstring(char *s, va_list args)
+{	
+	s = va_arg(args, char *);
+	write(1, s, strlen(s));
 	return (s);
 }
 
@@ -38,8 +38,8 @@ char _printstring(char *s, va_list args)
  * Return: d
  */
 
-char _printd(int d, va_list args)
-{
+int _printd(int d, va_list args)
+{	
 	d = va_arg(args, int);
 	write(1, &d, sizeof(int));
 	return (d);
@@ -53,8 +53,8 @@ char _printd(int d, va_list args)
  * Return: i
  */
 
-char _printi(int i, va_list args)
-{
+int _printi(int i, va_list args)
+{	
 	i = va_arg(args, int);
 	write(1, &i, sizeof(int));
 	return (i);
