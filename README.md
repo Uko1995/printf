@@ -21,3 +21,10 @@ i
 Task 3: Handle the following custom conversion specifiers:
 
 b: the unsigned int argument is converted to binary
+task 4:
+Handle the following conversion specifiers:
+
+u
+o
+x
+X
