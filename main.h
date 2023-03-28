@@ -1,6 +1,6 @@
-#ifndef _MAIN_H_
+#ifndef _MAIN_H_ 
 #define _MAIN_H_
-#include <stdarg.h>
+#include <stdarg.h> 
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -15,7 +15,7 @@ typedef struct print
 	char *t;
 	int (*f)(va_list);
 } print_t;
-
+/*function prototypes*/
 int _printf(const char *format, ...);
 int _putchar(char c);
 int print_c(va_list c);
