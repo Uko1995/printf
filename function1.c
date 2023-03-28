@@ -39,7 +39,11 @@ int print_s(va_list s)
 		_putchar(str[i++]);
 	return (i);
 }
-
+/**
+ * print_d - pulls integers from a variadic function
+ * @i: function parameter
+ * Return: counter
+ */
 int print_d(va_list i)
 {
 	int a[10];
