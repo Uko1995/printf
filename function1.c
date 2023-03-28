@@ -30,7 +30,7 @@ int print_c(va_list c)
  */
 int print_s(va_list s)
 {
-	char *str = va_arg(s, char *);
+	char *str = va_arg(s, char *);/*pulls a string from a variadic lis*/
 	int i = 0;
 
 	if (str == NULL)
