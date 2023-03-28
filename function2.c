@@ -115,7 +115,7 @@ int print_b(va_list b)
 {
 	unsigned int n, m = 2147483648, j = 1, sum = 0;
 	unsigned int a[32];
-	int counter = 0;
+	int counter = 0;/*a counter variable*/
 
 	n = va_arg(b, unsigned int);
 	a[0] = n / m;
